@@ -1,0 +1,53 @@
+Main Client:
+public class mainCL21s21168 {
+    
+   public static void main(String args[])
+   {
+       CL21s21168 Asabdcl=new CL21s21168();
+       Thread Asabdt=new Thread(Asabdcl);
+       Asabdt.start();
+       
+   }
+}
+Client:
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.Scanner;
+
+
+public class CL21s21168 implements Runnable
+{
+    public void run()
+    {
+        try{
+            Socket Abdoo=new Socket("localhost",7555);
+            Scanner abdooal=new Scanner(System.in);
+            
+            System.out.println("Ënter a code of drink:");
+            int abdocode=abdooal.nextInt();
+            
+            System.out.println("Ënter the required Q");
+            int abdoreqe=abdooal.nextInt();
+            
+            DataOutputStream abadedos=new DataOutputStream(Abdoo.getOutputStream());
+            abadedos.writeInt(abdocode);
+            abadedos.writeInt(abdoreqe);
+            abadedos.flush();
+            
+            DataInputStream abadedis=new DataInputStream(Abdoo.getInputStream());
+            String asasname=abadedis.readUTF();
+            double asasprice=abadedis.readDouble();
+            
+            System.out.println("drink name:"+asasname);
+            System.out.println("the pris is"+asasprice);
+            
+        }
+         catch(IOException e)
+        {
+            System.out.println(e);
+        }
+    }
+    
+} 
