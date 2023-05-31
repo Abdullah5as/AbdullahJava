@@ -1,0 +1,80 @@
+main Server:
+public class mainSE21s21168 
+{
+    
+    public static void main(String args[])
+    {
+       SE21s21168 asdca=new SE21s21168();
+       Thread asdcat=new Thread(asdca);
+       asdcat.start();
+       
+    }
+}
+Server:
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class SE21s21168 implements Runnable
+{
+    public void run()
+    {
+        try{
+            
+            String ashost="jdbc:derby://localhost:1527/AbdullahCR7";
+            String asname="Abdullah";
+            String aspass="as95221344";
+            
+            Connection asqwas=DriverManager.getConnection(ashost,asname,aspass);
+            
+            ServerSocket asbanas=new ServerSocket(7555);
+            System.out.println("Server is working");
+            
+            while(true){
+                Socket Abdoo=asbanas.accept();
+                
+                DataInputStream abadediss=new DataInputStream(Abdoo.getInputStream());
+                int abdocode =abadediss.readInt();
+                int abdoreqe =abadediss.readInt();
+                
+                System.out.println("The Code is"+abdocode);
+                System.out.println("The rqs is"+abdoreqe);
+                
+                Statement sadghfk=asqwas.createStatement();
+                String ydasd="SELECT * FROM ABDULCR7 WHERE ABCODE="+abdocode;
+                ResultSet hcyccyu=sadghfk.executeQuery(ydasd);
+                
+                DataOutputStream abadedoss=new DataOutputStream(Abdoo.getOutputStream());
+                while( hcyccyu.next()){
+                    String asasname=hcyccyu.getString("ABNAME");
+                    
+                    double Ase=hcyccyu.getDouble("ABPRICE");
+                    double asasprice=abdoreqe*Ase;
+                    
+                    abadedoss.writeUTF(asasname);
+                    abadedoss.writeDouble(asasprice);
+                    System.out.println("Send to the cliet");
+                    
+                }
+            }
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        } catch (IOException ex) {
+            Logger.getLogger(SE21s21168.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+}
