@@ -1,4 +1,4 @@
-Main Client:
+
 public class mainCL21s21168 {
     
    public static void main(String args[])
@@ -9,7 +9,7 @@ public class mainCL21s21168 {
        
    }
 }
-Client:
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
