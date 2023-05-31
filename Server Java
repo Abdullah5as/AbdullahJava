@@ -1,4 +1,4 @@
-main Server:
+
 public class mainSE21s21168 
 {
     
@@ -10,7 +10,7 @@ public class mainSE21s21168
        
     }
 }
-Server:
+
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
